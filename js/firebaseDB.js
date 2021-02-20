@@ -25,36 +25,8 @@ let fileButton = document.getElementById('fileButton');
 const dbRefObject = firebase.database().ref().child('object');
 const dbRefList = dbRefObject.child('posts');
 const dbRefPostCount = dbRefObject.child('postCount');
-const provider = new firebase.auth.GoogleAuthProvider();
 let postCount;
 let user;
-
-signIn = () => {
-    console.log("FINALLY")
-    firebase.auth()
-    .signInWithPopup(provider)
-    .then((result) => {
-        /** @type {firebase.auth.OAuthCredential} */
-        var credential = result.credential;
-        var token = credential.accessToken;
-        var user = result.user;
-        console.log(user.displayName);
-        console.log(user.email.split("@")[0]);
-        console.log(user.photoURL);
-
-        localStorage.name = user.displayName;
-        localStorage.username = user.email.split("@")[0];
-        localStorage.pfp = user.photoURL;
-
-        window.location.href("home.html")
-    }).catch((error) => {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        var email = error.email;
-        var credential = error.credential;
-    });
-}
-
 
 //Listen for file Selection
 fileButton.addEventListener('change', function(e){
