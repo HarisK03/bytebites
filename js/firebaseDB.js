@@ -87,7 +87,6 @@ createPost = () => {
 
     let date = new Date(Date.now()).toString().split(" ");
 
-    console.log(gsReference);
     dbRefList.child("post" + (postCount + 1)).set({
         author: document.getElementById('author').value,
         title: document.getElementById('title').value,
