@@ -42,7 +42,9 @@ signIn = () => {
         var token = credential.accessToken;
         // The signed-in user info.
         var user = result.user;
-        console.log(user);
+        console.log(user.displayName);
+        console.log(user.email.split("@")[0]);
+        console.log(user.photoURL);
         // ...
     }).catch((error) => {
         // Handle Errors here.
