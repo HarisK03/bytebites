@@ -1,0 +1,249 @@
+body {
+    background-color: beige;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.container {
+    text-align: center;
+    max-height: 500px;
+    max-width: 500px;
+    margin: auto;
+}
+
+img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.post {
+    background-color: white;
+    max-width: 500px;
+    margin: auto;
+    box-shadow: -1px 4px 7px rgba(0, 0, 0, 0.1); 
+    transition: 1s ease;
+}
+
+.post:hover {
+    box-shadow: -3px 6px 9px rgba(0, 0, 0, 0.1);
+    transition: 1s ease;
+}
+
+.banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner-left {
+    display: flex;
+    justify-content: space-between;
+    background-color: #FCFCFC;
+}
+
+.profilePicture {
+    height: 35px;
+    border-radius: 50%;
+    vertical-align: middle;
+    display: inline-block;
+    white-space: nowrap;
+    margin-right: 5px;
+    margin-left: 10px;
+}
+
+.username {
+    display:inline;
+    white-space: nowrap;
+    max-width: 50%;
+    vertical-align: middle;
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.button {
+  padding: 2px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button i {
+    cursor: pointer;
+    color: #2D2E2E;
+}
+
+.text {
+    text-align: left;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    margin-left: 10px;
+    padding-bottom: 10px;
+    margin-right: 10px;
+}
+
+.title {
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.date {
+    text-align: left;
+    font-size: 12px;
+    margin-left: 10px;
+    font-family: 'Raleway', sans-serif;
+    margin-right: 10px;
+}
+
+.tags {
+    text-align: left;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    vertical-align: middle;
+    display: inline-block;
+    white-space: nowrap;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.tags .tag {
+    display: flex;
+    vertical-align: middle;
+    display: inline-block;
+    white-space: nowrap;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    border: none;
+    font-family: 'Raleway', sans-serif;
+}
+
+textarea {
+    resize: none;
+    font-family: 'Raleway', sans-serif;
+}
+
+.titlePost {
+    min-width: 200px;
+    min-height: 75px;
+}
+
+.submit {
+    border: none;
+    background-color:#2D2E2E;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 20px;
+    font-size: 18px;
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
+}
+
+.create-post {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.verticalpfp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.titlePost {
+    margin-left: 5px;
+    margin-right: 10px;
+    border: none;
+}
+
+.textarea {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    resize: none;
+    min-height: 20px;
+    line-height: 20px;
+    border-radius: 0px;
+    margin-right: 10px;
+    font-family: 'Raleway', sans-serif;
+    padding-left: 10px;
+    padding-right: 10px;
+    max-width: 400px;
+    font-weight: 500;
+  }
+  
+  .textarea[contenteditable]:empty::before {
+    content: "Name Your Masterpiece";
+    color: gray
+
+  }
+
+  span:focus {
+      outline: none;
+  }
+
+  .textBody {
+      font-weight: 300;
+      font-size: 12px;
+      margin-bottom: 10px;
+  }
+
+  .textBody[contenteditable]:empty::before {
+    content: "Spill the beans.";
+    color: gray
+  }
+
+  .tagsBody {
+    font-weight: 300;
+    font-size: 12px;
+    }
+
+  .tagsBody[contenteditable]:empty::before {
+    content: "Tags (seperated by space)";
+    color: gray;
+  }
+
+  .img {
+      margin-left: 10px;
+      margin-bottom: 10px;
+  }
+
+  .img i {
+    color: gray;
+    cursor: pointer;
+  }
+
+  .buttonPost {
+      text-align: center;
+      margin-top: 10px;
+      margin-bottom: 10px;
+  }
+
+  .buttonPost button {
+    cursor: pointer;
+    border: none;
+    padding: 10px 10px 10px 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    border-radius: 20px;
+    transition: 1s ease;
+    color: gray;
+  }
+  
+  .buttonPost button:hover {
+    background-color: darkgray;
+    transition: 1s ease;
+    color: white;
+  }

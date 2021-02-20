@@ -110,6 +110,11 @@ dbRefPostCount.on('value', snap => {
     postCount = snap.val();
 });
 
+let dltButton = document.createElement('button');
+dltButton.setAttribute('id', 'dltButton' + postCount);
+dltButton.innerHTML = 'dltButton' + postCount;
+document.body.appendChild(dltButton);
+
 // Function to create a new post
 createPost = () => {
 
@@ -124,6 +129,10 @@ createPost = () => {
         time: date[0] + " " + date[1] + " " + date[2] + " " + date[3]+ " " + date[4],
         img: "https://firebasestorage.googleapis.com/v0/b/uofthacks2021-298a3.appspot.com/o/posts%2Fpost" + (postCount+1) + "?alt=media"
     });
-
+    
     dbRefPostCount.set(postCount + 1);
+}
+
+deletePost = () => {
+
 }
