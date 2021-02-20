@@ -124,7 +124,7 @@ createPost = () => {
     let date = new Date(Date.now()).toString().split(" ");
 
     dbRefList.child("post" + (postCount + 1)).set({
-        author: user.displayName,
+        author: localStorage.getItem("username"),
         title: document.getElementById('title').value,
         body: document.getElementById('body').value,
         tag: document.getElementById('tag').value.toLowerCase().split(" "),
