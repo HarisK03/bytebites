@@ -1,6 +1,6 @@
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-var firebaseConfig = {
+let firebaseConfig = {
     apiKey: "AIzaSyBwytOWnI8AqaVTf9LUrc4nWIk4p9-3Scw",
     authDomain: "uofthacks2021-298a3.firebaseapp.com",
     databaseURL: "https://uofthacks2021-298a3-default-rtdb.firebaseio.com",
@@ -17,13 +17,43 @@ firebase.analytics();
 
 // Get elements
 const preObject = document.getElementById('object');
-const ulList = document.getElementById('list')
+const ulList = document.getElementById('list');
+let uploader = document.getElementById('uploader');
+let fileButton = document.getElementById('fileButton');
+
 
 // Create references
 const dbRefObject = firebase.database().ref().child('object');
 const dbRefList = dbRefObject.child('posts');
 const dbRefPostCount = dbRefObject.child('postCount');
 let postCount;
+
+//Listen for file Selection
+fileButton.addEventListener('change', function(e){
+    //Get file
+    let file = e.target.files[0];
+    //create a storage ref
+    let storageRef = firebase.storage().ref('posts/post' + (postCount+1));
+    //Upload file
+    let task = storageRef.put(file);
+
+    
+    //Update progress bar
+    task.on('state_changed', 
+        function progress(snapshot){
+            let percentage = (snapshot.bytesTransferred / snapshot.totalBytes)*100;
+            uploader.value = percentage;
+        },
+        function error(err){
+            
+        },
+        function complete(snapshot){
+            
+        }
+    
+    );
+
+});
 
 // Sync object changes
 dbRefObject.on('value', snap => {
@@ -55,8 +85,9 @@ dbRefPostCount.on('value', snap => {
 // Function to create a new post
 createPost = () => {
 
-    let date = new Date(Date.now()).toString().split(" ")
-
+    let date = new Date(Date.now()).toString().split(" ");
+    let gsReference = firebase.storage().refFromURL('gs://uofthacks2021-298a3.appspot.com/posts/'+postCount);
+    console.log(gsReference);
     dbRefList.child("post" + (postCount + 1)).set({
         author: document.getElementById('author').value,
         title: document.getElementById('title').value,
