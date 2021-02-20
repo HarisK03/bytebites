@@ -1,5 +1,5 @@
 .u-section-1 {
-  background-image: url("./images/ggh.jpg");
+  background-image: url("./images/background.jpg");
   background-position: 50% 50%;
   min-height: 731px;
 }
@@ -25,7 +25,7 @@
   text-transform: uppercase;
   letter-spacing: 5px;
   font-family: "PT Sans", sans-serif;
-  margin: 0;
+  margin: 172px 0 0;
 }
 
 .u-section-1 .u-text-2 {
@@ -79,6 +79,10 @@
 
   .u-section-1 .u-layout-cell-1 {
     min-height: 603px;
+  }
+
+  .u-section-1 .u-text-1 {
+    margin-top: 0;
   }
 
   .u-section-1 .u-text-3 {
