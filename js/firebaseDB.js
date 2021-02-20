@@ -28,6 +28,7 @@ const dbRefList = dbRefObject.child('posts');
 const dbRefPostCount = dbRefObject.child('postCount');
 const provider = new firebase.auth.GoogleAuthProvider();
 let postCount;
+let user;
 
 signIn = () => {
     console.log("FINALLY")
@@ -36,6 +37,8 @@ signIn = () => {
     .then((result) => {
         /** @type {firebase.auth.OAuthCredential} */
         var credential = result.credential;
+        user=result.user;
+        console.log(user);
 
         // This gives you a Google Access Token. You can use it to access the Google API.
         var token = credential.accessToken;
