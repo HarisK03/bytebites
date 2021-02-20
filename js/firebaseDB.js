@@ -86,14 +86,15 @@ dbRefPostCount.on('value', snap => {
 createPost = () => {
 
     let date = new Date(Date.now()).toString().split(" ");
-    let gsReference = firebase.storage().refFromURL('gs://uofthacks2021-298a3.appspot.com/posts/'+postCount);
+
     console.log(gsReference);
     dbRefList.child("post" + (postCount + 1)).set({
         author: document.getElementById('author').value,
         title: document.getElementById('title').value,
         body: document.getElementById('body').value,
         tag: document.getElementById('tag').value.toLowerCase().split(" "),
-        time: date[0] + " " + date[1] + " " + date[2] + " " + date[3]+ " " + date[4]
+        time: date[0] + " " + date[1] + " " + date[2] + " " + date[3]+ " " + date[4],
+        img: "https://firebasestorage.googleapis.com/v0/b/uofthacks2021-298a3.appspot.com/o/posts%2Fpost" + (postCount+1) + "?alt=media"
     });
 
     dbRefPostCount.set(postCount + 1);
