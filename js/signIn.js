@@ -30,7 +30,7 @@ signIn = () => {
         localStorage.username = user.email.split("@")[0];
         localStorage.pfp = user.photoURL;
 
-        window.location.href = "posts/index.html";
+        window.location.href = "posts.html";
     }).catch((error) => {
         var errorCode = error.code;
         var errorMessage = error.message;
