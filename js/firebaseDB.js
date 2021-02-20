@@ -31,13 +31,23 @@ let postCount;
 
 
 
+createPost = () => {
+
+    dbRefList.child("post" + (postCount + 1)).set({
+        author: document.getElementById('author').value,
+        title: document.getElementById('title').value,
+        body: document.getElementById('body').value
+    });
+
+    dbRefPostCount.set(postCount + 1);
+}
+
 // Write User Data
 dbRefList.child("post4").set({
     author: "sam",
     title: "back pain",
     body: "idk how to work in a group"
 });
-
 
 // Sync object changes
 dbRefObject.on('value', snap => {
@@ -63,8 +73,7 @@ dbRefList.on('child_added', snap => {
 
 // Sync counter changes
 dbRefPostCount.on('value', snap => {
-    console.log(snap.val());
-    // postCOunt = snap.val();
+    postCount = snap.val();
 });
 
 
