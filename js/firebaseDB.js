@@ -21,7 +21,6 @@ const ulList = document.getElementById('list');
 let uploader = document.getElementById('uploader');
 let fileButton = document.getElementById('fileButton');
 
-
 // Create references
 const dbRefObject = firebase.database().ref().child('object');
 const dbRefList = dbRefObject.child('posts');
@@ -37,10 +36,7 @@ signIn = () => {
     .then((result) => {
         /** @type {firebase.auth.OAuthCredential} */
         var credential = result.credential;
-
-        // This gives you a Google Access Token. You can use it to access the Google API.
         var token = credential.accessToken;
-        // The signed-in user info.
         var user = result.user;
         console.log(user.displayName);
         console.log(user.email.split("@")[0]);
@@ -50,16 +46,12 @@ signIn = () => {
         localStorage.username = user.email.split("@")[0];
         localStorage.pfp = user.photoURL;
 
-        // ...
+        window.location.href("home.html")
     }).catch((error) => {
-        // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
-        // The email of the user's account used.
         var email = error.email;
-        // The firebase.auth.AuthCredential type that was used.
         var credential = error.credential;
-        // ...
     });
 }
 
@@ -93,7 +85,7 @@ fileButton.addEventListener('change', function(e){
 
 // Sync object changes
 dbRefObject.on('value', snap => {
-    preObject.innerText = JSON.stringify(snap.val(), null, 3)
+    preObject.innerText = JSON.stringify(snap.val(), null, 3);
 });
 
 // // Sync list changes
@@ -125,6 +117,7 @@ createPost = () => {
 
     dbRefList.child("post" + (postCount + 1)).set({
         author: localStorage.getItem("username"),
+        pfp: localStorage.getItem("pfp"),
         title: document.getElementById('title').value,
         body: document.getElementById('body').value,
         tag: document.getElementById('tag').value.toLowerCase().split(" "),
