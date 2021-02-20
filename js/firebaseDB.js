@@ -18,8 +18,8 @@ firebase.analytics();
 // Get elements
 const preObject = document.getElementById('object');
 const ulList = document.getElementById('list');
-let uploader = document.getElementById('imgupload');
-let fileButton = document.getElementById('fileButton');
+// let uploader = document.getElementById('imgupload');
+let fileButton = document.getElementById('imgupload');
 
 // Create references
 const dbRefObject = firebase.database().ref().child('object');
@@ -28,30 +28,32 @@ const dbRefPostCount = dbRefObject.child('postCount');
 let postCount;
 let user;
 
-// //Listen for file Selection
-// fileButton.addEventListener('change', function(e){
-//     //Get file
-//     let file = e.target.files[0];
-//     //create a storage ref
-//     let storageRef = firebase.storage().ref('posts/post' + (postCount+1));
-//     //Upload fi    let task = storageRef.put(file);
+//Listen for file Selection
+fileButton.addEventListener('change', function(e){
+    //Get file
+    let file = e.target.files[0];
+    //create a storage ref
+    let storageRef = firebase.storage().ref('posts/post' + (postCount+1));
+    //Upload fi    
+    let task = storageRef.put(file);
 
-//     //Update progress bar
-//     task.on('state_changed', 
-//         function progress(snapshot){
-//             let percentage = (snapshot.bytesTransferred / snapshot.totalBytes)*100;
-//             uploader.value = percentage;
-//         },
-//         function error(err){
+    //Update progress bar
+    task.on('state_changed', 
+        function progress(snapshot){
+            // let percentage = (snapshot.bytesTransferred / snapshot.totalBytes)*100;
+            // uploader.value = percentage;
+        },
+        function error(err){
             
-//         },
-//         function complete(snapshot){
-            
-//         }
+        },
+        function complete(snapshot){
+            document.getElementById('fileIcon').style = "color: green;";
+            alert("image uploaded!")
+        }
     
-//     );
+    );
 
-// });
+});
 
 // Sync object changes
 // dbRefObject.on('value', snap => {
@@ -67,15 +69,6 @@ dbRefList.on('child_added', snap => {
     let tags = info.tag;
     let time = info.time;
     let img = info.img;
-
-    console.log(author)
-    console.log(pfp)
-    console.log(title)
-    console.log(body)
-    console.log(tags)
-    console.log(time)
-    console.log(img)
-
 
     let post;
 
@@ -106,27 +99,10 @@ dbRefList.on('child_added', snap => {
 
     post += "<div class='container'><p class='body'></p>"
     post += body
-    post += "</p></div></div>"
+    post += "</p></div></div><br>"
 
     document.getElementById("post-collection").innerHTML += post;
 });
-
-// // Sync list changes
-// dbRefList.on('child_added', snap => {
-//     let post = snap.val()
-
-//     console.log(post)
-//     const liA = document.createElement('li')
-//     const liT = document.createElement('li')
-//     const liB = document.createElement('li')
-//     liA.innerText = post.author;
-//     liT.innerText = post.title;
-//     liB.innerText = post.body;
-//     ulList.appendChild(liA);
-//     ulList.appendChild(liT);
-//     ulList.appendChild(liB);
-
-// });
 
 // Sync counter changes
 dbRefPostCount.on('value', snap => {
@@ -148,7 +124,7 @@ createPost = () => {
         pfp: localStorage.getItem("pfp"),
         title: document.getElementById('title').value,
         body: document.getElementById('body').value,
-        tag: document.getElementById('tag').value.toLowerCase().split(" "),
+        tag: document.getElementById('tags').value.toLowerCase().split(" "),
         time: date[0] + " " + date[1] + " " + date[2] + " " + date[3]+ " " + date[4],
         img: "https://firebasestorage.googleapis.com/v0/b/uofthacks2021-298a3.appspot.com/o/posts%2Fpost" + (postCount+1) + "?alt=media"
     });

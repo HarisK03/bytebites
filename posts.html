@@ -28,13 +28,18 @@
             <span id="body" class="textarea body-post" role="textbox" contenteditable></span>
           </div>
           <div class='img-post'>
-            <input type="file" id="imgupload" style="display:none"/><a id="OpenImgUpload"><i class="fas fa-image"></i></a>
+            <form>
+              <label for ='imgupload' >
+                <a id="OpenImgUpload"><i id="fileIcon" class="fas fa-image"></i></a>
+              </label>
+              <input type="file" id="imgupload" style="display: none"/>
+            </form>
           </div>
           <div class='tags-post'>
             <span id='tags' class="textarea tags-post" role="textbox" contenteditable></span>
           </div>
           <div class='button-post'>
-            <button>Share Your Meals</button>
+            <button onClick = 'createPost()'>Share Your Meals</button>
           </div>
         </div>
       </div>
@@ -64,14 +69,13 @@
         </div> 
         <div class='container'>
           <img src='https://icatcare.org/app/uploads/2018/07/Thinking-of-getting-a-cat.png'>
-        </div>
-        <div class='container'>
-          <p class='body'>Sam's cat is still cuter >:(</p>
+          <div class='container'>
+            <p class='body'>Sam's cat is still cuter >:(</p>
+          </div>
         </div>
       </div>
     </div>
     <script src="https://kit.fontawesome.com/b22ced689c.js" crossorigin="anonymous"></script>
     <script src="js\firebaseDB.js" ></script>
-    <!-- <script src="js\posts.js" ></script> -->
   </body>
 </html>    
