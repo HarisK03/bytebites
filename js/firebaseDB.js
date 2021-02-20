@@ -22,18 +22,34 @@ const ulList = document.getElementById('list')
 // Create references
 const dbRefObject = firebase.database().ref().child('object');
 const dbRefList = dbRefObject.child('posts');
+const dbRefPostCount = dbRefObject.child('postCount');
+let postCount;
+
+// //create storage ref
+// var storageRef = firebase.storage().ref('new')
+// storageRef.put('hello')
+
+
+
+// Write User Data
+dbRefList.child("post4").set({
+    author: "sam",
+    title: "back pain",
+    body: "idk how to work in a group"
+});
+
 
 // Sync object changes
 dbRefObject.on('value', snap => {
     preObject.innerText = JSON.stringify(snap.val(), null, 3)
 });
 
-//sync list changes
-dbRefList.on('child_added', snap=> {
+// Sync list changes
+dbRefList.on('child_added', snap => {
     let post = snap.val()
 
     console.log(post)
-    const liA = document.createElement("li")
+    const liA = document.createElement('li')
     const liT = document.createElement('li')
     const liB = document.createElement('li')
     liA.innerText = post.author;
@@ -43,6 +59,12 @@ dbRefList.on('child_added', snap=> {
     ulList.appendChild(liT);
     ulList.appendChild(liB);
 
+});
+
+// Sync counter changes
+dbRefPostCount.on('value', snap => {
+    console.log(snap.val());
+    // postCOunt = snap.val();
 });
 
 
