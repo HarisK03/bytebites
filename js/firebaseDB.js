@@ -45,6 +45,11 @@ signIn = () => {
         console.log(user.displayName);
         console.log(user.email.split("@")[0]);
         console.log(user.photoURL);
+
+        localStorage.name = user.displayName;
+        localStorage.username = user.email.split("@")[0];
+        localStorage.pfp = user.photoURL;
+
         // ...
     }).catch((error) => {
         // Handle Errors here.
@@ -119,7 +124,7 @@ createPost = () => {
     let date = new Date(Date.now()).toString().split(" ");
 
     dbRefList.child("post" + (postCount + 1)).set({
-        author: document.getElementById('author').value,
+        author: user.displayName,
         title: document.getElementById('title').value,
         body: document.getElementById('body').value,
         tag: document.getElementById('tag').value.toLowerCase().split(" "),
