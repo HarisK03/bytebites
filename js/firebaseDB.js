@@ -17,9 +17,32 @@ firebase.analytics();
 
 // Get elements
 const preObject = document.getElementById('object');
+const ulList = document.getElementById('list')
 
 // Create references
 const dbRefObject = firebase.database().ref().child('object');
+const dbRefList = dbRefObject.child('posts');
 
 // Sync object changes
-dbRefObject.on('value', snap => console.log(snap.val()));
+dbRefObject.on('value', snap => {
+    preObject.innerText = JSON.stringify(snap.val(), null, 3)
+});
+
+//sync list changes
+dbRefList.on('child_added', snap=> {
+    let post = snap.val()
+
+    console.log(post)
+    const liA = document.createElement("li")
+    const liT = document.createElement('li')
+    const liB = document.createElement('li')
+    liA.innerText = post.author;
+    liT.innerText = post.title;
+    liB.innerText = post.body;
+    ulList.appendChild(liA);
+    ulList.appendChild(liT);
+    ulList.appendChild(liB);
+
+});
+
+
