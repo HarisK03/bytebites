@@ -31,7 +31,7 @@ let postCount;
 
 signIn = () => {
     console.log("FINALLY")
-    firebase.auth().signInWithPopup(provider)
+    firebase.auth().signInWithRedirect(provider)
 }
 
 
