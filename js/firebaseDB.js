@@ -25,55 +25,45 @@ const dbRefList = dbRefObject.child('posts');
 const dbRefPostCount = dbRefObject.child('postCount');
 let postCount;
 
-// //create storage ref
-// var storageRef = firebase.storage().ref('new')
-// storageRef.put('hello')
-
-
-
-createPost = () => {
-
-    dbRefList.child("post" + (postCount + 1)).set({
-        author: document.getElementById('author').value,
-        title: document.getElementById('title').value,
-        body: document.getElementById('body').value
-    });
-
-    dbRefPostCount.set(postCount + 1);
-}
-
-// Write User Data
-dbRefList.child("post4").set({
-    author: "sam",
-    title: "back pain",
-    body: "idk how to work in a group"
-});
-
 // Sync object changes
 dbRefObject.on('value', snap => {
     preObject.innerText = JSON.stringify(snap.val(), null, 3)
 });
 
-// Sync list changes
-dbRefList.on('child_added', snap => {
-    let post = snap.val()
+// // Sync list changes
+// dbRefList.on('child_added', snap => {
+//     let post = snap.val()
 
-    console.log(post)
-    const liA = document.createElement('li')
-    const liT = document.createElement('li')
-    const liB = document.createElement('li')
-    liA.innerText = post.author;
-    liT.innerText = post.title;
-    liB.innerText = post.body;
-    ulList.appendChild(liA);
-    ulList.appendChild(liT);
-    ulList.appendChild(liB);
+//     console.log(post)
+//     const liA = document.createElement('li')
+//     const liT = document.createElement('li')
+//     const liB = document.createElement('li')
+//     liA.innerText = post.author;
+//     liT.innerText = post.title;
+//     liB.innerText = post.body;
+//     ulList.appendChild(liA);
+//     ulList.appendChild(liT);
+//     ulList.appendChild(liB);
 
-});
+// });
 
 // Sync counter changes
 dbRefPostCount.on('value', snap => {
     postCount = snap.val();
 });
 
+// Function to create a new post
+createPost = () => {
 
+    let date = new Date(Date.now()).toString().split(" ")
+
+    dbRefList.child("post" + (postCount + 1)).set({
+        author: document.getElementById('author').value,
+        title: document.getElementById('title').value,
+        body: document.getElementById('body').value,
+        tag: document.getElementById('tag').value.toLowerCase().split(" "),
+        time: date[0] + " " + date[1] + " " + date[2] + " " + date[3]+ " " + date[4]
+    });
+
+    dbRefPostCount.set(postCount + 1);
+}

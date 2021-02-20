@@ -29,8 +29,14 @@
             <input type="text" id='title' name="title"><br><br>
             <label for="body">Body: </label>
             <input type="text" id='body' name="body"><br><br>
+            <label for="tag">Tags (Multiple tags are seperated by spaces): </label>
+            <input type="text" id="tag" name="tag" placeholder="#" value="#"><br><br>
             <!-- <input type="submit" value="submit"> -->
         </form>
+        <!--Progress Upload and File Upload-->
+        <progress value='0' max='100' id="uploader">0%</progress>
+        <input type="file" value="upload" id="fileButton"/>
+
         <button onClick = 'createPost()' >submit</button>      
 
         <!-- Value -->
