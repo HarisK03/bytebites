@@ -26,7 +26,14 @@ let fileButton = document.getElementById('fileButton');
 const dbRefObject = firebase.database().ref().child('object');
 const dbRefList = dbRefObject.child('posts');
 const dbRefPostCount = dbRefObject.child('postCount');
+const provider = new firebase.auth.GoogleAuthProvider();
 let postCount;
+
+signIn = () => {
+    console.log("FINALLY")
+    firebase.auth().signInWithPopup(provider)
+}
+
 
 //Listen for file Selection
 fileButton.addEventListener('change', function(e){
