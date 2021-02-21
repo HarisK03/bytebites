@@ -158,7 +158,7 @@ dbRefList.on('child_added', snap => {
 
             post += "<div class='comment-message'><span id='c" + info.id + "' class='textarea2 comment-post' role='textbox' contenteditable></span><a onclick = 'addComment(" + '"' + info.id + '"' + ")'><i class='fas fa-paper-plane'></i></a></div>"
             
-            post += "</div><br>"
+            post += "</div></div><br>"
 
         // <hr class="solid">  
         //   <div class='comment-container'>
