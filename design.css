@@ -21,6 +21,10 @@ body {
   margin: auto;
 }
 
+.extend {
+  width: 100%;
+}
+
 .post {
   background-color: white;
   max-width: 500px;
@@ -200,6 +204,7 @@ body {
     font-weight: 300;
     font-size: 12px;
     margin-bottom: 10px;
+    max-width: 425px;
   }
   
   .body-post[contenteditable]:empty::before {
@@ -210,7 +215,7 @@ body {
   .img-post {
     margin-left: 10px;
     margin-bottom: 10px;
-  }
+  } 
   
   .img-post i {
     color: gray;
