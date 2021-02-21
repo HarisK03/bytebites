@@ -90,11 +90,10 @@ dbRefList.on('child_added', snap => {
     // TODO: If image exists only
     post += "<div class='container'><img src='"
     post += img
-    post += "'></div>"
-
-    post += "<div class='container'><p class='body'></p>"
+    post += "'>"
+    post += "<div class='container'><p class='body'>"
     post += body
-    post += "</p></div></div><br>"
+    post += "</p></div></div></div><br>"
 
     document.getElementById("post-collection").innerHTML += post;
 });
