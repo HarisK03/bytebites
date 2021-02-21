@@ -50,7 +50,7 @@ fileButton.addEventListener('change', function(e){
     //Get file
     let file = e.target.files[0];
     //create a storage ref
-    let storageRef = firebase.storage().ref('posts/post' + (postCount));
+    let storageRef = firebase.storage().ref('posts/post' + (lowerPostCount(postCount)));
     //Upload fi    
     let task = storageRef.put(file);
 
@@ -88,7 +88,7 @@ dbRefList.on('child_added', snap => {
         post += author
         post += "</p></div>"
         if (author = localStorage.getItem("username")) {
-            post += "<div class='delete'><a id ='" + count + "'onclick = 'deletePost()'><i class='fas fa-trash'></i></a></div>"
+            post += "<div class='delete'><a id ='" + (count-1) + "'onclick = 'deletePost()'><i class='fas fa-trash'></i></a></div>"
         }
         post += "</div><div class='container'><p class='date'>"
         post += time
@@ -137,6 +137,6 @@ createPost = () => {
     return false;
 }
 
-// deletePost = () => {
-//     dbRefList.child("post" + count).set(isDeleted, true);
-// }
+deletePost = () => {
+    dbRefList.child("post" + count).set(isDeleted, true);
+}
