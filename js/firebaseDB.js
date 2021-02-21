@@ -28,6 +28,10 @@ const dbRefPostCount = dbRefObject.child('postCount');
 let postCount;
 let user;
 
+if (sessionStorage.getItem("filterWord") === null) {
+    sessionStorage.filterWord = '';
+}
+
 // Sync counter changes
 dbRefPostCount.on('value', snap => {
     postCount = snap.val();
@@ -81,41 +85,41 @@ dbRefList.on('child_added', snap => {
         let time = info.time;
         let id = info.id;
 
-        console.log(info)
-        
-        let post = "<div class='post'><div class='header'><div class='push'><img class='profile-picture' src='"
-        post += pfp
-        post += "'><p class='username'>"
-        post += author
-        post += "</p></div>"
-        if (author === localStorage.getItem("username")) {
-            post += "<div class='delete'><a onclick = 'deletePost(" + '"' + info.id + '"' + ")'><i class='fas fa-trash'></i></a></div>"
-        }
-        post += "</div><div class='container'><p class='date'>"
-        post += time
-        post += "</p></div><div class='container'><h1 class='title'>"
-        post += title
-        post += "</h1></div><div class='container tags'>"
-        for (let i = 0; i < tags.length; i++) {
-            post += "<button>"
-            post += tags[i]
-            post += "</button>"
-        }
-        post += "</div>"
-        post += "<div class='container'>"
-
-        if (typeof(info.img) != "undefined") {
-            let img = info.img;
-            post += "<img src='"
-            post += img
-            post += "'>"
-        }
-
-        post += "<div class='container'><p class='body'>"
-        post += body
-        post += "</p></div></div></div><br>"
+        if (sessionStorage.getItem('filterWord') === '' || tags.includes(sessionStorage.getItem('filterWord'))) {
+            let post = "<div class='post'><div class='header'><div class='push'><img class='profile-picture' src='"
+            post += pfp
+            post += "'><p class='username'>"
+            post += author
+            post += "</p></div>"
+            if (author === localStorage.getItem("username")) {
+                post += "<div class='delete'><a onclick = 'deletePost(" + '"' + info.id + '"' + ")'><i class='fas fa-trash'></i></a></div>"
+            }
+            post += "</div><div class='container'><p class='date'>"
+            post += time
+            post += "</p></div><div class='container'><h1 class='title'>"
+            post += title
+            post += "</h1></div><div class='container tags'>"
+            for (let i = 0; i < tags.length; i++) {
+                post += "<button onClick='filterTagButton(" + '"' + tags[i] + '"' + ")'>"
+                post += tags[i]
+                post += "</button>"
+            }
+            post += "</div>"
+            post += "<div class='container'>"
     
-        document.getElementById("post-collection").innerHTML += post;
+            if (typeof(info.img) != "undefined") {
+                let img = info.img;
+                post += "<img src='"
+                post += img
+                post += "'>"
+            }
+    
+            post += "<div class='container'><p class='body'>"
+            post += body
+            post += "</p></div></div></div><br>"
+        
+            document.getElementById("post-collection").innerHTML += post;
+        }
     }
 });
 
@@ -169,4 +173,14 @@ deletePost = (myID) => {
         location.reload();
         return false;
 
+}
+
+filterTag = () => {
+    sessionStorage.filterWord = document.getElementById('tagFilter').value;
+} 
+
+filterTagButton = (word) => {
+    sessionStorage.filterWord = word;
+    location.reload();
+    return false;
 }

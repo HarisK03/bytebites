@@ -1,4 +1,4 @@
-<DOCTYPE=html>
+<!DOCTYPE html>
 <html>
   <head>
     <link rel="stylesheet" href="./design.css">
@@ -21,9 +21,9 @@
     <nav class="fixed-nav-bar">
       <div class="brand"><a href="#top">ByteBites</a></div>
       <div class="container-search">
-        <form action="/action_page.php">
-          <input type="text" placeholder="Search" name="search">
-          <button type="submit"><i class="fa fa-search"></i></button>
+        <form>
+          <input type="text" placeholder="Search Tags" id="tagFilter">
+          <button type="submit" onClick="filterTag()"><i class="fa fa-search"></i></button>
         </form>
       </div>
     </nav>
@@ -46,7 +46,7 @@
             <label for ='imgupload' >
               <a id="OpenImgUpload"><i id="fileIcon" class="fas fa-image"></i></a>
             </label>
-            <input type="file" id="imgupload" accept="image/*" style="display: none"/>
+            <input type="file" id="imgupload" accept="image/*,video/*" style="display: none"/>
           </form>
         </div>
         <div class='button-post'>
