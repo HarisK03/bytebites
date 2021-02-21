@@ -79,12 +79,9 @@ dbRefList.on('child_added', snap => {
         let body = info.body;
         let tags = info.tag;
         let time = info.time;
-        let img = info.img;
         let id = info.id;
         
-        console.log(img);
-        
-        let post = "<div class='post'><div class='header'><div><img class='profile-picture' src='"
+        let post = "<div class='post'><div class='header'><div class='push'><img class='profile-picture' src='"
         post += pfp
         post += "'><p class='username'>"
         post += author
@@ -103,11 +100,15 @@ dbRefList.on('child_added', snap => {
             post += "</button>"
         }
         post += "</div>"
-    
+        post += "<div class='container'>"
         // TODO: If image exists only
-        post += "<div class='container'><img src='"
-        post += img
-        post += "'>"
+
+        if (typeof(info.img) != "undefined") {
+            let img = info.img;
+            post += "<img src='"
+            post += img
+            post += "'>"
+        }
         post += "<div class='container'><p class='body'>"
         post += body
         post += "</p></div></div></div><br>"
@@ -132,10 +133,22 @@ createPost = () => {
             body: bodyy,
             tag: document.getElementById('tags').innerHTML.toLowerCase().split(" "),
             time: date[0] + " " + date[1] + " " + date[2] + " " + date[3]+ " " + date[4],
-            img: "https://firebasestorage.googleapis.com/v0/b/uofthacks2021-298a3.appspot.com/o/posts%2Fpost" + (postCount) + "?alt=media",
             isDeleted: false,
             id: postCount
         });
+
+        if(hasImage) {
+            dbRefList.child("post" + (postCount)).set({
+                author: localStorage.getItem("username"),
+                pfp: localStorage.getItem("pfp"),
+                title: titlee,
+                body: bodyy,
+                tag: document.getElementById('tags').innerHTML.toLowerCase().split(" "),
+                time: date[0] + " " + date[1] + " " + date[2] + " " + date[3]+ " " + date[4],
+                isDeleted: false,
+                img: "https://firebasestorage.googleapis.com/v0/b/uofthacks2021-298a3.appspot.com/o/posts%2Fpost" + (postCount) + "?alt=media",
+            });
+        }
         
         dbRefPostCount.set(postCount);
     } else {
@@ -148,6 +161,8 @@ createPost = () => {
 }
 
 deletePost = (myID) => {
+
+
     dbRefList.child("post" + myID + "/isDeleted").set(true);
     console.log(myID);
     console.log("hello world")

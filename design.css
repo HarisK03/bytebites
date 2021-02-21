@@ -86,7 +86,6 @@ body {
   vertical-align: middle;
   display: inline-block;
   white-space: nowrap;
-  margin-left: 10px;
   margin-right: 5px;
   cursor: pointer;
 }
@@ -100,9 +99,16 @@ body {
   font-weight: 700;
 }
 
+.push {
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+
 .delete {
   padding: 2px;
-  margin-right: 10px;
+  margin-right: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -121,8 +127,8 @@ body {
 .date {
   text-align: left;
   font-size: 12px;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
   font-family: 'Raleway', sans-serif;
 }
 
@@ -131,21 +137,21 @@ body {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   font-size: 24px;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .tags {
     text-align: left;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
     display: flex;
     vertical-align: middle;
     display: inline-block;
     white-space: nowrap;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .tags button {
@@ -171,10 +177,11 @@ body {
     font-family: 'Raleway', sans-serif;
     font-weight: 500;
     font-size: 12px;
-    margin-left: 10px;
+    margin-left: 20px;
     margin-bottom: 0px;
-    padding-bottom: 10px;
-    margin-right: 10px;
+    padding-bottom: 20px;
+    margin-right: 20px;
+    padding-top: 10px;
 }
 
 /* Create Post CSS */
@@ -196,17 +203,6 @@ body {
     justify-content: center;
     margin-top: 10px;
     margin-bottom: 10px;
-  }
-  
-  .profile-picture {
-    height: 35px;
-    border-radius: 50%;
-    vertical-align: middle;
-    display: inline-block;
-    white-space: nowrap;
-    margin-left: 10px;
-    margin-right: 5px;
-    cursor: pointer;
   }
   
   span:focus {
