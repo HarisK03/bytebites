@@ -50,7 +50,7 @@ body {
 
 .container-search {
   position: absolute; 
-	top:65%; 
+	top:50%; 
   right:0;   
   margin-right: 30px;
   -ms-transform: translateY(-50%);
