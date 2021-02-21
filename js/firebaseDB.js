@@ -28,6 +28,9 @@ const dbRefPostCount = dbRefObject.child('postCount');
 let postCount;
 let user;
 
+let userProfile = localStorage.getItem("pfp")
+document.getElementById('userProfile').src = userProfile;
+
 //Listen for file Selection
 fileButton.addEventListener('change', function(e){
     //Get file
@@ -44,21 +47,13 @@ fileButton.addEventListener('change', function(e){
             // uploader.value = percentage;
         },
         function error(err){
-            
+            alert("An unexpected error occured. Please try again :(");
         },
         function complete(snapshot){
             document.getElementById('fileIcon').style = "color: green;";
-            alert("image uploaded!")
         }
-    
     );
-
 });
-
-// Sync object changes
-// dbRefObject.on('value', snap => {
-//     preObject.innerText = JSON.stringify(snap.val(), null, 3);
-// });
 
 dbRefList.on('child_added', snap => {
     let info = snap.val()
@@ -122,9 +117,9 @@ createPost = () => {
     dbRefList.child("post" + (postCount + 1)).set({
         author: localStorage.getItem("username"),
         pfp: localStorage.getItem("pfp"),
-        title: document.getElementById('title').value,
-        body: document.getElementById('body').value,
-        tag: document.getElementById('tags').value.toLowerCase().split(" "),
+        title: document.getElementById('title').innerHTML,
+        body: document.getElementById('body').innerHTML,
+        tag: document.getElementById('tags').innerHTML.toLowerCase().split(" "),
         time: date[0] + " " + date[1] + " " + date[2] + " " + date[3]+ " " + date[4],
         img: "https://firebasestorage.googleapis.com/v0/b/uofthacks2021-298a3.appspot.com/o/posts%2Fpost" + (postCount+1) + "?alt=media"
     });
