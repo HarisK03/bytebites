@@ -1,6 +1,7 @@
 # ByteBites
-http://bytebites.ml/
-[![N|Solid](https://i.imgur.com/geOvXho.png)](http://bytebites.ml/)
+> http://bytebites.ml/
+
+![N|Solid](https://i.imgur.com/geOvXho.png)
 
 ## Introduction + What is ByteBites?
 **Bytebites** is a cloud-accessible, mobile-stable, Firebase powered web application that provides food-lovers with what truly matters — taste.
@@ -54,7 +55,7 @@ UofTHacks 2021 helped us grow as programmers and as a group. We learned many new
 ## Relavent Links
 - [ByteBites Offical Website](http://bytebites.ml/)
 - [Github Repository](https://github.com/ayushtvora/ByteBites)
-- [Devpost]()
+- [Devpost Submission]()
 
 ## Languages, Tools, and Libraries Used
 - HTML, CSS, Javascript
