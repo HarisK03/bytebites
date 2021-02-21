@@ -46,7 +46,7 @@ Our demo web application hosts numerous features that the user can engage with.
 
 ![alt text](https://i.imgur.com/n7wrd2f.gif)
 
-Example of Creating a Post
+**Example of Creating a Post**
 
 ## Inspiration + Why we made it
 During these unprecedented times when a world is in a state of disarray, what is needed more than ever is a sense of connectivity — a snap back to reality. By helping to strengthen the bonds within the food enthusiast community globally during the pandemic, we can strive to create not only a means for individuals to benefit in their cooking, but to connect and grow together, furthering the food industry collectively.
