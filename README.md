@@ -1,5 +1,6 @@
 # ByteBites
-[![N|Solid](https://i.imgur.com/geOvXho.png)](temp)
+http://bytebites.ml/
+[![N|Solid](https://i.imgur.com/geOvXho.png)](http://bytebites.ml/)
 
 ## Introduction + What is ByteBites?
 **Bytebites** is a cloud-accessible, mobile-stable, Firebase powered web application that provides food-lovers with what truly matters — taste.
@@ -9,7 +10,7 @@
 ## Our Team
 Our team consists of three members: [Haris Kamal](https://github.com/HarisK03), [Vraj Patel](https://github.com/vrajpatel2003), and [Ayush Vora](https://www.linkedin.com/in/ayushtvora/).
 
-**Haris Kamal** is the lead front-end developer who was in charge of creating the beautiful website that you will see when you navigate to the [**ByteBites**](temp) official webpage, in addition the to the post view and creation pages.
+**Haris Kamal** is the lead front-end developer who was in charge of creating the beautiful website that you will see when you navigate to the [**ByteBites**](http://bytebites.ml/) official webpage, in addition the to the post view and creation pages.
 
 **Vraj Patel** is one of the back-end developers who was in charge of collecting user input and bridging the front-end and back-end to create a cohesive user experience.
 
@@ -19,7 +20,7 @@ Our team consists of three members: [Haris Kamal](https://github.com/HarisK03), 
 Making an account is also as easy as signing in with your Google account! Simply sign in and you are able to post, view, and search for your interests in the food world. The user experience is one that is clean and elegant, allowing users to take control in their browsing.
 
 ### Demo
-A demo for this web application can be found [here](temp), where the afformentioned features have been implemented to a demonstratable degree.
+A demo for this web application can be found [here](http://bytebites.ml/), where the afformentioned features have been implemented to a demonstratable degree.
 
 ### Features
 
@@ -51,7 +52,7 @@ During these unpresecedented times when a world is in a state of disarray, what 
 UofTHacks 2021 helped us grow as programmers and as a group. We learned many new things while we encountered many obstacles. We began this hackathon with zero knowledge of Firebase; however, we walked away with knowledge of databases and the bridge between the front-end. As a team, we persevered and overcame these obstacles while having fun, experiencing the best and the worst **TOGETHER**. We learned many new concepts in both the front-end and back-end aspects of our project. Overall, we had a great time and we hope to work together again in the near future. 
 
 ## Relavent Links
-- [ByteBites Offical Website]()
+- [ByteBites Offical Website](http://bytebites.ml/)
 - [Github Repository](https://github.com/ayushtvora/ByteBites)
 - [Devpost]()
 
