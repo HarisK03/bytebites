@@ -86,7 +86,7 @@ dbRefList.on('child_added', snap => {
         post += "'><p class='username'>"
         post += author
         post += "</p></div>"
-        if (author = localStorage.getItem("username")) {
+        if (author === localStorage.getItem("username")) {
             post += "<div class='delete'><a onclick = 'deletePost(" + '"' + id + '"' + ")'><i class='fas fa-trash'></i></a></div>"
         }
         post += "</div><div class='container'><p class='date'>"
@@ -101,7 +101,6 @@ dbRefList.on('child_added', snap => {
         }
         post += "</div>"
         post += "<div class='container'>"
-        // TODO: If image exists only
 
         if (typeof(info.img) != "undefined") {
             let img = info.img;
@@ -109,6 +108,7 @@ dbRefList.on('child_added', snap => {
             post += img
             post += "'>"
         }
+
         post += "<div class='container'><p class='body'>"
         post += body
         post += "</p></div></div></div><br>"
@@ -162,10 +162,17 @@ createPost = () => {
 
 deletePost = (myID) => {
 
+    let myUser;
+    let postUser;
 
-    dbRefList.child("post" + myID + "/isDeleted").set(true);
-    console.log(myID);
-    console.log("hello world")
-    location.reload();
-    return false;
+    if (myUser === postUser) {
+        dbRefList.child("post" + myID + "/isDeleted").set(true);
+        console.log(myID);
+        location.reload();
+        return false;
+    }
+    else {
+        alert("You cannot delete this post! It is not yours.")
+    }
+
 }
