@@ -73,25 +73,7 @@ fileButton.addEventListener('change', function(e){
         }
     );
 });
-        /* <hr class="solid">  
-          <div class='comment-container'>
-            <div class='container comments'>
-              <h3>Ayush Vora</h3>
-              <p>Hey this is a very cute cat :)</p>
-            </div>
-            <div class='container comments'>
-              <h3>Ayush Vora</h3>
-              <p>Hey this is a very cute cat :)</p>
-            </div>
-            <div class='container comments'>
-              <h3>Ayush Vora</h3>
-              <p>Hey this is a very cute cat :) </p>
-            </div>
-          </div>
-          <div class='comment-message'>
-            <span id="body" class="textarea2 comment-post" role="textbox" contenteditable></span>
-            <i class="fas fa-paper-plane"></i>
-          </div> */
+
 
 dbRefList.on('child_added', snap => {
     if(!snap.val().isDeleted){
@@ -104,6 +86,20 @@ dbRefList.on('child_added', snap => {
         let time = info.time;
         let id = info.id;
 
+        let commentsArr;
+        let userArr;
+
+        try {
+            commentsArr = info.comments.commentsArray;
+            userArr = info.comments.userArray;
+        }
+        
+        catch(error) {
+            commentsArr = []
+            userArr = []
+        }
+
+    
         if (sessionStorage.getItem('filterWord') === '' || tags.includes(sessionStorage.getItem('filterWord'))) {
             let post = "<div class='post'><div class='header'><div class='push'><img class='profile-picture' src='"
             post += pfp
@@ -136,8 +132,55 @@ dbRefList.on('child_added', snap => {
             post += "<div class='container'><p class='body'>"
             post += body
             post += "</p></div></div>"
+            
+            post += "<hr class='solid'>"
+            post += "<div class='comment-container'>"
+            
+            if (commentsArr.length < 3) {
+               for (let i = 0; i < commentsArr.length; i++) {
+                   post += "<div class='container comments'><h3>"
+                   post += userArr[i]
+                   post += "</h3><p>"
+                   post += commentsArr[i]
+                   post += "</p></div>"
+               }  
+            } 
+            else {
+                for (let i = (commentsArr.length - 3); i < commentsArr.length; i++) {
+                    post += "<div class='container comments'><h3>"
+                    post += userArr[i]
+                    post += "</h3><p>"
+                    post += commentsArr[i]
+                    post += "</p></div>"
+                }
+            }
+
+
             post += "<div class='comment-message'><span id='c" + info.id + "' class='textarea2 comment-post' role='textbox' contenteditable></span><a onclick = 'addComment(" + '"' + info.id + '"' + ")'><i class='fas fa-paper-plane'></i></a></div>"
+            
             post += "</div><br>"
+
+        // <hr class="solid">  
+        //   <div class='comment-container'>
+        //     <div class='container comments'>
+        //       <h3>Ayush Vora</h3>
+        //       <p>Hey this is a very cute cat :)</p>
+        //     </div>
+        //     <div class='container comments'>
+        //       <h3>Ayush Vora</h3>
+        //       <p>Hey this is a very cute cat :)</p>
+        //     </div>
+        //     <div class='container comments'>
+        //       <h3>Ayush Vora</h3>
+        //       <p>Hey this is a very cute cat :) </p>
+        //     </div>
+        //   </div>
+        //   <div class='comment-message'>
+        //     <span id="body" class="textarea2 comment-post" role="textbox" contenteditable></span>
+        //     <i class="fas fa-paper-plane"></i>
+        //   </div>
+
+
         
             document.getElementById("post-collection").innerHTML += post;
         }
