@@ -48,6 +48,27 @@ body {
   color: #E65C7B;
 }
 
+.container-search {
+  position: absolute; 
+	top:65%; 
+  right:0;   
+  margin-right: 30px;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  border: none;
+  outline: none;
+}
+
+.container-search input {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+
+.container-search button {
+  cursor: pointer;
+  font-size: 15px;
+}
+
 .container {
   text-align: center;
   margin: auto;
