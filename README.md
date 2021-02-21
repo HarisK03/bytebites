@@ -44,7 +44,7 @@ Our demo web application hosts numerous features that the user can engage with.
 | | |
 | Tag Searching | If there is a specific query that you are searching for, you can even filter posts by tags to find exactly what you are looking for. |
 
-![alt text](https://i.imgur.com/RwdcfNL.png)
+![alt text](https://im2.ezgif.com/tmp/ezgif-2-3d5d8c68187f.gif)
 Example of Creating a Post
 
 ## Inspiration + Why we made it
