@@ -223,13 +223,15 @@ addComment = (messageID) => {
         else {
             let userArray1 = info.comments.userArray;
             let commentsArray1 = info.comments.commentsArray;
-            console.log(userArray);
-            console.log(commentsArray);
+            console.log(userArray1);
+            console.log(commentsArray1);
+            console.log(localStorage.getItem("username"))
+            console.log(document.getElementById("c" + messageID).innerHTML)
             // dbRefPost.child("/comments").set({
             //     userArray: userArray1,
             //     commentsArray: commentsArray1
             // });
         }
 
-    // });
+    });
 }
