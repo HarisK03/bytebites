@@ -65,9 +65,7 @@ dbRefList.on('child_added', snap => {
     let time = info.time;
     let img = info.img;
 
-    let post;
-
-    post += "<div class='post'><div class='header'><div><img class='profile-picture' src='"
+    let post = "<div class='post'><div class='header'><div><img class='profile-picture' src='"
     post += pfp
     post += "'><p class='username'>"
     post += author
@@ -124,6 +122,7 @@ createPost = () => {
     });
     
     dbRefPostCount.set(postCount + 1);
+    document.getElementById('fileIcon').style = "color: none;";
 }
 
 deletePost = () => {
