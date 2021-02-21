@@ -45,6 +45,8 @@ lowerPostCount = (c) => {
 let userProfile = localStorage.getItem("pfp")
 document.getElementById('userProfile').src = userProfile;
 
+
+let hasImage = false;
 //Listen for file Selection
 fileButton.addEventListener('change', function(e){
     //Get file
@@ -57,19 +59,17 @@ fileButton.addEventListener('change', function(e){
     //Update progress bar
     task.on('state_changed', 
         function progress(snapshot){
-            // let percentage = (snapshot.bytesTransferred / snapshot.totalBytes)*100;
-            // uploader.value = percentage;
         },
         function error(err){
             alert("An unexpected error occured. Please try again :(");
         },
         function complete(snapshot){
             document.getElementById('fileIcon').style = "color: green;";
+            hasImage = true;
         }
     );
 });
 
-let count = "1000000"
 dbRefList.on('child_added', snap => {
     if(!snap.val().isDeleted){
         let info = snap.val()
@@ -80,15 +80,17 @@ dbRefList.on('child_added', snap => {
         let tags = info.tag;
         let time = info.time;
         let img = info.img;
-        count = lowerPostCount(count);
-
+        let id = info.id;
+        
+        console.log(img);
+        
         let post = "<div class='post'><div class='header'><div><img class='profile-picture' src='"
         post += pfp
         post += "'><p class='username'>"
         post += author
         post += "</p></div>"
         if (author = localStorage.getItem("username")) {
-            post += "<div class='delete'><a id ='" + (count-1) + "'onclick = 'deletePost()'><i class='fas fa-trash'></i></a></div>"
+            post += "<div class='delete'><a onclick = 'deletePost(" + '"' + id + '"' + ")'><i class='fas fa-trash'></i></a></div>"
         }
         post += "</div><div class='container'><p class='date'>"
         post += time
@@ -116,27 +118,39 @@ dbRefList.on('child_added', snap => {
 
 // Function to create a new post
 createPost = () => {
+    let titlee = document.getElementById('title').innerHTML;
+    let bodyy = document.getElementById('body').innerHTML;
+    if (titlee != "" && (hasImage || bodyy != "")){
+        let date = new Date(Date.now()).toString().split(" ");
 
-    let date = new Date(Date.now()).toString().split(" ");
-
-    postCount = lowerPostCount(postCount);
-
-    dbRefList.child("post" + (postCount)).set({
-        author: localStorage.getItem("username"),
-        pfp: localStorage.getItem("pfp"),
-        title: document.getElementById('title').innerHTML,
-        body: document.getElementById('body').innerHTML,
-        tag: document.getElementById('tags').innerHTML.toLowerCase().split(" "),
-        time: date[0] + " " + date[1] + " " + date[2] + " " + date[3]+ " " + date[4],
-        img: "https://firebasestorage.googleapis.com/v0/b/uofthacks2021-298a3.appspot.com/o/posts%2Fpost" + (postCount) + "?alt=media",
-        isDeleted: false
-    });
+        postCount = lowerPostCount(postCount);
     
-    dbRefPostCount.set(postCount);
+        dbRefList.child("post" + (postCount)).set({
+            author: localStorage.getItem("username"),
+            pfp: localStorage.getItem("pfp"),
+            title: titlee,
+            body: bodyy,
+            tag: document.getElementById('tags').innerHTML.toLowerCase().split(" "),
+            time: date[0] + " " + date[1] + " " + date[2] + " " + date[3]+ " " + date[4],
+            img: "https://firebasestorage.googleapis.com/v0/b/uofthacks2021-298a3.appspot.com/o/posts%2Fpost" + (postCount) + "?alt=media",
+            isDeleted: false,
+            id: postCount
+        });
+        
+        dbRefPostCount.set(postCount);
+    } else {
+        alert("You are missing some fields! Every post requires a title and a picture or text");
+    }
+    
+    hasImage = false;
     location.reload();
     return false;
 }
 
-deletePost = () => {
-    dbRefList.child("post" + count).set(isDeleted, true);
+deletePost = (myID) => {
+    dbRefList.child("post" + myID + "/isDeleted").set(true);
+    console.log(myID);
+    console.log("hello world")
+    location.reload();
+    return false;
 }

@@ -50,22 +50,23 @@ body {
 
 .container {
   text-align: center;
-  max-height: 500px;
-  max-width: 500px;
   margin: auto;
 }
 
-.extend {
+.post-banner {
   width: 100%;
+  background-color: white;
+  margin: auto;
+  box-shadow: -1px 4px 7px rgba(0, 0, 0, 0.1);
+  max-width: 60%;
 }
 
 .post {
   background-color: white;
-  max-width: 500px;
-  max-height: 500px;
   margin: auto;
-  box-shadow: -1px 4px 7px rgba(0, 0, 0, 0.1); 
-  overflow: auto;
+  box-shadow: -1px 4px 7px rgba(0, 0, 0, 0.1);
+  max-width: 60%;
+  min-width: 400px;
 }
 
 .post:hover {
@@ -171,6 +172,7 @@ body {
     font-weight: 500;
     font-size: 12px;
     margin-left: 10px;
+    margin-bottom: 0px;
     padding-bottom: 10px;
     margin-right: 10px;
 }
@@ -221,8 +223,6 @@ body {
     border-radius: 0px;
     margin-right: 10px;
     font-family: 'Raleway', sans-serif;
-    padding-left: 10px;
-    padding-right: 10px;
     max-width: 400px;
     font-weight: 500;
   }
@@ -236,7 +236,8 @@ body {
     font-weight: 300;
     font-size: 12px;
     margin-bottom: 10px;
-    max-width: 425px;
+    width: 80%;
+    margin: auto;
   }
   
   .body-post[contenteditable]:empty::before {
@@ -245,18 +246,26 @@ body {
   }
 
   .img-post {
-    margin-left: 10px;
     margin-bottom: 10px;
+    text-align: center;
   } 
   
   .img-post i {
     color: gray;
     cursor: pointer;
+    font-size: 32px;
+  }
+
+  .img-post i:hover {
+    color: darkgray;
+    transition: 1s ease;
   }
   
   .tags-post {
     font-weight: 300;
     font-size: 12px;
+    width: 80%;
+    margin: auto;
   }
     
   .tags-post[contenteditable]:empty::before {
