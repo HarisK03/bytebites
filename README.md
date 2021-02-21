@@ -44,6 +44,9 @@ Our demo web application hosts numerous features that the user can engage with.
 | | |
 | Tag Searching | If there is a specific query that you are searching for, you can even filter posts by tags to find exactly what you are looking for. |
 
+![alt text](https://i.imgur.com/RwdcfNL.png)
+Example of Creating a Post
+
 ## Inspiration + Why we made it
 During these unpresecedented times when a world is in a state of disarray, what is needed more than ever is a sense of connectivity — a snap back to reality. By helping to strengthen the bonds within the food enthusiast community globally during the pandemic, we can strive to create not only a means for individuals to benefit in their cooking, but to connect and grow together, furthering the food industry collectively.
 
@@ -67,7 +70,7 @@ UofTHacks 2021 helped us grow as programmers and as a group. We learned many new
 ## Future Plans
 This project is very scalable, and can be expanded in the future in many ways. Some examples that we have include...
 
-- Likes & Comments
+- Likes
 - Virtual Cookbook (saving posts)
 - Cooking Calculator
 - Shopping List
