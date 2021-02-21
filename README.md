@@ -21,7 +21,7 @@ Our team consists of three members: [Haris Kamal](https://github.com/HarisK03), 
 Making an account is also as easy as signing in with your Google account! Simply sign in and you are able to post, view, and search for your interests in the food world. The user experience is one that is clean and elegant, allowing users to take control in their browsing.
 
 ### Demo
-A demo for this web application can be found [here](http://bytebites.ml/), where the afformentioned features have been implemented to a demonstratable degree.
+A demo for this web application can be found [here](http://bytebites.ml/), where the aforementioned features have been implemented to a demonstrable degree.
 
 ### Features
 
@@ -32,7 +32,7 @@ Our demo web application hosts numerous features that the user can engage with.
 | | |
 | Firebase Authentication | Using Firebase Authentication, we can easily let users sign in using their Google account. It is a simple way to get their name, email/username, and profile picture in the click of only a few buttons. |
 | | |
-| Firebase Realtime Database | The Firebase Realtime Database is responsible for storing all the posts on our website. They are all saved in a JSON format that is easily accessable by the website. |
+| Firebase Realtime Database | The Firebase Realtime Database is responsible for storing all the posts on our website. They are all saved in a JSON format that is easily accessible by the website. |
 | | |
 | Firebase Storage | The Firebase Storage is used to store images, such as uploaded pictures for posts. These can later be accessed while displaying the posts. |
 | | |
@@ -44,27 +44,26 @@ Our demo web application hosts numerous features that the user can engage with.
 | | |
 | Tag Searching | If there is a specific query that you are searching for, you can even filter posts by tags to find exactly what you are looking for. |
 
-
 ![alt text](https://i.imgur.com/n7wrd2f.gif)
 
 Example of Creating a Post
 
 ## Inspiration + Why we made it
-During these unpresecedented times when a world is in a state of disarray, what is needed more than ever is a sense of connectivity — a snap back to reality. By helping to strengthen the bonds within the food enthusiast community globally during the pandemic, we can strive to create not only a means for individuals to benefit in their cooking, but to connect and grow together, furthering the food industry collectively.
+During these unprecedented times when a world is in a state of disarray, what is needed more than ever is a sense of connectivity — a snap back to reality. By helping to strengthen the bonds within the food enthusiast community globally during the pandemic, we can strive to create not only a means for individuals to benefit in their cooking, but to connect and grow together, furthering the food industry collectively.
 
 ![alt text](https://i.imgur.com/RwdcfNL.png)
 
 ## Our Experience During UofTHacks 2021
 UofTHacks 2021 helped us grow as programmers and as a group. We learned many new things while we encountered many obstacles. We began this hackathon with zero knowledge of Firebase; however, we walked away with knowledge of databases and the bridge between the front-end. As a team, we persevered and overcame these obstacles while having fun, experiencing the best and the worst **TOGETHER**. We learned many new concepts in both the front-end and back-end aspects of our project. Overall, we had a great time and we hope to work together again in the near future. 
 
-## Relavent Links
-- [ByteBites Offical Website](http://bytebites.ml/)
+## Relevant Links
+- [ByteBites Official Website](http://bytebites.ml/)
 - [Github Repository](https://github.com/ayushtvora/ByteBites)
 - [Devpost Submission](https://devpost.com/software/bytebites)
 
 ## Languages, Tools, and Libraries Used
-- HTML, CSS, Javascript
-- JQuery
+- HTML, CSS, JavaScript
+- jQuery
 - Visual Studio Code
 - Bootstrap Studio
 - Google Firebase
