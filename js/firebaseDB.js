@@ -136,7 +136,7 @@ dbRefList.on('child_added', snap => {
             post += "<div class='container'><p class='body'>"
             post += body
             post += "</p></div></div>"
-            post += "<div class='comment-message'><span id='body' class='textarea2 comment-post' role='textbox' contenteditable></span><i class='fas fa-paper-plane'></i></div>"
+            post += "<div class='comment-message'><span id='c" + info.id + "' class='textarea2 comment-post' role='textbox' contenteditable></span><a onclick = 'addComment(" + '"' + info.id + '"' + ")'><i class='fas fa-paper-plane'></i></a></div>"
             post += "</div><br>"
         
             document.getElementById("post-collection").innerHTML += post;
@@ -200,4 +200,36 @@ filterTagButton = (word) => {
     sessionStorage.filterWord = word;
     location.reload();
     return false;
+}
+
+addComment = (messageID) => {
+
+    const dbRefPost = dbRefList.child('post' + messageID);
+
+    dbRefPost.on('value', snap => {
+        let info = snap.val();
+        if (typeof(info.comments) === "undefined") {
+            let userArray = [];
+            let commentsArray = [];
+            userArray.push(localStorage.getItem("username"));
+            commentsArray.push(document.getElementById("c" + messageID).innerHTML);
+
+            dbRefPost.child("/comments").set({
+                userArray: userArray,
+                commentsArray: commentsArray
+            });
+        }
+
+        else {
+            let userArray1 = info.comments.userArray;
+            let commentsArray1 = info.comments.commentsArray;
+            console.log(userArray);
+            console.log(commentsArray);
+            // dbRefPost.child("/comments").set({
+            //     userArray: userArray1,
+            //     commentsArray: commentsArray1
+            // });
+        }
+
+    // });
 }
