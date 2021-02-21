@@ -73,6 +73,25 @@ fileButton.addEventListener('change', function(e){
         }
     );
 });
+        /* <hr class="solid">  
+          <div class='comment-container'>
+            <div class='container comments'>
+              <h3>Ayush Vora</h3>
+              <p>Hey this is a very cute cat :)</p>
+            </div>
+            <div class='container comments'>
+              <h3>Ayush Vora</h3>
+              <p>Hey this is a very cute cat :)</p>
+            </div>
+            <div class='container comments'>
+              <h3>Ayush Vora</h3>
+              <p>Hey this is a very cute cat :) </p>
+            </div>
+          </div>
+          <div class='comment-message'>
+            <span id="body" class="textarea2 comment-post" role="textbox" contenteditable></span>
+            <i class="fas fa-paper-plane"></i>
+          </div> */
 
 dbRefList.on('child_added', snap => {
     if(!snap.val().isDeleted){
@@ -116,7 +135,9 @@ dbRefList.on('child_added', snap => {
     
             post += "<div class='container'><p class='body'>"
             post += body
-            post += "</p></div></div></div><br>"
+            post += "</p></div></div>"
+            post += "<div class='comment-message'><span id='body' class='textarea2 comment-post' role='textbox' contenteditable></span><i class='fas fa-paper-plane'></i></div>"
+            post += "</div><br>"
         
             document.getElementById("post-collection").innerHTML += post;
         }
@@ -129,9 +150,7 @@ createPost = () => {
     let bodyy = document.getElementById('body').innerHTML;
     if (titlee != "" && (hasImage || bodyy != "")){
         let date = new Date(Date.now()).toString().split(" ");
-
         postCount = lowerPostCount(postCount);
-    
         dbRefList.child("post" + (postCount)).set({
             author: localStorage.getItem("username"),
             pfp: localStorage.getItem("pfp"),
@@ -142,7 +161,6 @@ createPost = () => {
             isDeleted: false,
             id: postCount
         });
-
         if(hasImage) {
             dbRefList.child("post" + (postCount)).set({
                 author: localStorage.getItem("username"),
@@ -156,7 +174,6 @@ createPost = () => {
                 id: postCount
             });
         }
-        
         dbRefPostCount.set(postCount);
     } else {
         alert("You are missing some fields! Every post requires a title and a picture or text");

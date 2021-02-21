@@ -205,6 +205,71 @@ body {
     padding-top: 10px;
 }
 
+hr {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.textarea2 {
+  display: block;
+  width: 80%;
+  overflow: hidden;
+  resize: none;
+  min-height: 20px;
+  line-height: 20px;
+  border-radius: 0px;
+  margin-right: 10px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+}
+
+.comment-container {
+  margin-top: 20px;
+}
+
+.comments {
+  text-align: left;
+  margin-left: 20px;
+}
+
+.comments h3 {
+  display: inline;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  margin-right: 3px;
+}
+
+.comments p {
+  display: inline;
+  font-family: 'Raleway', sans-serif;
+  font-size: 12px;
+}
+
+.comment-message {
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.comment-message i {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  color: #2D2E2E;
+}
+
+.comment-message i:hover {
+  color: black;
+  transition: 1s ease;
+  cursor: pointer;
+}
+
+.comment-post {
+  width: 95%
+}
+
+.comment-post[contenteditable]:empty::before {
+  content: "Thoughts?";
+  color: gray;
+}
+
 /* Create Post CSS */
 .create-post {
     display: flex;

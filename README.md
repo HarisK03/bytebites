@@ -15,8 +15,8 @@ Our team consists of three members: [Haris Kamal](https://github.com/HarisK03), 
 
 **Ayush Vora** is one of the back-end developers who was in charge of managing the Firebase database and linking the Firebase server to the central website.
 
-## How to use ByteBites + Features
-Making an account is also as easy as signing in with your Google account! Simply sign in and you are able to post, view, and search for your interests in the food world. The user experience is one that is clean and elegant, allowing users to take control in their browsing. 
+## How to use ByteBites
+Making an account is also as easy as signing in with your Google account! Simply sign in and you are able to post, view, and search for your interests in the food world. The user experience is one that is clean and elegant, allowing users to take control in their browsing.
 
 ### Demo
 A demo for this web application can be found [here](temp), where the afformentioned features have been implemented to a demonstratable degree.
@@ -25,21 +25,31 @@ A demo for this web application can be found [here](temp), where the afformentio
 
 Our demo web application hosts numerous features that the user can engage with.
 
-1. Firebase Authentication
-2. Firebase Realtime Database
-3. Firebase Storage
-2. Post Creation (title, body text, image, and tags)
-3. Post Viewing 
-4. Post Deletion
-5. Tag Searching
+1. **Firebase Authentication**
+Using Firebase Authentication, we can easily let users sign in using their Google account. It is a simple way to get their name, email/username, and profile picture in the click of only a few buttons.
+2. **Firebase Realtime Database**
+The Firebase Realtime Database is responsible for storing all the posts on our website. They are all saved in a JSON format that is easily accessable by the website. 
+3. **Firebase Storage**
+The Firebase Storage is used to store images, such as uploaded pictures for posts. These can later be accessed while displaying the posts.
+4. **Post Creation (title, body text, image, and tags)**
+When signed in, one can make a post easily. A post must contain a title, as well as body text and/or an image to upload. Posts can also contain tags to making searching easier for users. 
+5. **Post Viewing**
+Below the post creation, users can see public posts from other users. The posts will show the user's username and profile picture, the title of the post, the time it was posted, the tags it is described as, and the image or body of the post, depending on the poster. 
+6. **Post Deletion**
+Don't like a post that you've made? No problem! You can go ahead and click the delete icon in the top right of **YOUR** post and it will be wiped from existence. The individual is only able to delete posts that **THEY** have made. 
+7. **Tag Searching**
+If there is a specific query that you are searching for, you can even filter posts by tags to find exactly what you are looking for. 
 
 ## Inspiration + Why we made it
-During these presecedented times when a world is in a state of disarray, what is needed more than ever is a sense of connectivity — a snap back to reality. By helping to strengthen the bonds within the food enthusiast community globally during the pandemic, we can strive to create not only a means for individuals to benefit in their cooking, but to connect and grow together.
-- covid -> people staying at home -> cooking from home
+During these unpresecedented times when a world is in a state of disarray, what is needed more than ever is a sense of connectivity — a snap back to reality. By helping to strengthen the bonds within the food enthusiast community globally during the pandemic, we can strive to create not only a means for individuals to benefit in their cooking, but to connect and grow together, furthering the food industry collectively.
+
+## Our Experience During UofTHacks 2021
+UofTHacks 2021 helped us grow as programmers and as a group. We learned many new things while we encountered many obstacles. As a team, we persevered and overcame them while having fun. We learned many new concepts in both  the front-end and back-end of our project. Overall, we had a great time and we hope to work together again in the near future. 
+
 
 ## Relavent Links
 - [ByteBites Offical Website]()
-- [Github Repository]()
+- [Github Repository](https://github.com/ayushtvora/ByteBites)
 - [Devpost]()
 
 ## Languages, Tools, and Libraries Used
@@ -47,12 +57,12 @@ During these presecedented times when a world is in a state of disarray, what is
 - JQuery
 - Visual Studio Code
 - Bootstrap Studio
-- Firebase - Google
+- Google Firebase
 
 ## Future Plans
-- Likes and Comments
-- Virtual Cookbook (Saving Posts)
+This project is very scalable, and can be expanded in the future in many ways. Some examples that we have include...
+
+- Likes & Comments
+- Virtual Cookbook (saving posts)
 - Cooking Calculator
 - Shopping List
-
-
