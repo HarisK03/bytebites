@@ -276,39 +276,6 @@ addComment = (messageID) => {
             });
         }
     });
-        
-
-    // console.log(dbRefPost.child('comments').get().then());
-    // dbRefPost.on('value', snap => {
-    //     let info = snap.val();
-    //     if (typeof(info.comments) === "undefined") {
-    //         let userArray = [];
-    //         let commentsArray = [];
-    //         userArray.push(localStorage.getItem("username"));
-    //         commentsArray.push(document.getElementById("c" + messageID).innerHTML);
-
-    //         dbRefPost.child("/comments").set({
-    //             userArray: userArray,
-    //             commentsArray: commentsArray
-    //         });
-    //     }
-
-    //     else {
-    //         let userArray1 = info.comments.userArray;
-    //         let commentsArray1 = info.comments.commentsArray;
-    //         console.log(userArray1);
-    //         console.log(commentsArray1);
-    //         console.log(localStorage.getItem("username"))
-    //         console.log(document.getElementById("c" + messageID).innerHTML)
-    //         userArray1.push(localStorage.getItem("username"))
-    //         commentsArray1.push(document.getElementById("c" + messageID).innerHTML)
-    //         console.log(userArray1);
-    //         console.log(commentsArray1);
-            // dbRefPost.child("/comments").set({
-            //     userArray: userArray1,
-            //     commentsArray: commentsArray1
-            // });
-        // }
-
-    // });
+    location.reload();
+    return false;
 }
