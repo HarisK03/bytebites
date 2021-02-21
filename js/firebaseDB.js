@@ -122,7 +122,7 @@ createPost = () => {
     });
     
     dbRefPostCount.set(postCount + 1);
-    document.getElementById('fileIcon').style = "color: none;";
+    document.getElementById('fileIcon').style = "color: grey;";
 }
 
 deletePost = () => {
