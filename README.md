@@ -55,7 +55,7 @@ UofTHacks 2021 helped us grow as programmers and as a group. We learned many new
 ## Relavent Links
 - [ByteBites Offical Website](http://bytebites.ml/)
 - [Github Repository](https://github.com/ayushtvora/ByteBites)
-- [Devpost Submission]()
+- [Devpost Submission](https://devpost.com/software/bytebites)
 
 ## Languages, Tools, and Libraries Used
 - HTML, CSS, Javascript
