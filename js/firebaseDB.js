@@ -28,6 +28,20 @@ const dbRefPostCount = dbRefObject.child('postCount');
 let postCount;
 let user;
 
+// Sync counter changes
+dbRefPostCount.on('value', snap => {
+    postCount = snap.val();
+});
+
+lowerPostCount = (c) => {
+    c = parseInt(c)-1;
+    c = c.toString();
+    while (c.length < 7) {
+        c = "0" + c;
+    }
+    return c;
+}
+
 let userProfile = localStorage.getItem("pfp")
 document.getElementById('userProfile').src = userProfile;
 
@@ -36,7 +50,7 @@ fileButton.addEventListener('change', function(e){
     //Get file
     let file = e.target.files[0];
     //create a storage ref
-    let storageRef = firebase.storage().ref('posts/post' + (postCount+1));
+    let storageRef = firebase.storage().ref('posts/post' + (postCount));
     //Upload fi    
     let task = storageRef.put(file);
 
@@ -55,77 +69,74 @@ fileButton.addEventListener('change', function(e){
     );
 });
 
+let count = "1000000"
 dbRefList.on('child_added', snap => {
-    let info = snap.val()
-    let author = info.author;
-    let pfp = info.pfp;
-    let title = info.title;
-    let body = info.body;
-    let tags = info.tag;
-    let time = info.time;
-    let img = info.img;
+    if(!snap.val().isDeleted){
+        let info = snap.val()
+        let author = info.author;
+        let pfp = info.pfp;
+        let title = info.title;
+        let body = info.body;
+        let tags = info.tag;
+        let time = info.time;
+        let img = info.img;
+        count = lowerPostCount(count);
 
-    let post = "<div class='post'><div class='header'><div><img class='profile-picture' src='"
-    post += pfp
-    post += "'><p class='username'>"
-    post += author
-    post += "</p></div>"
-    if (author = localStorage.getItem("username")) {
-        post += "<div class='delete'><a onclick = 'deletePost()'><i class='fas fa-trash'></i></a></div>"
+        let post = "<div class='post'><div class='header'><div><img class='profile-picture' src='"
+        post += pfp
+        post += "'><p class='username'>"
+        post += author
+        post += "</p></div>"
+        if (author = localStorage.getItem("username")) {
+            post += "<div class='delete'><a id ='" + count + "'onclick = 'deletePost()'><i class='fas fa-trash'></i></a></div>"
+        }
+        post += "</div><div class='container'><p class='date'>"
+        post += time
+        post += "</p></div><div class='container'><h1 class='title'>"
+        post += title
+        post += "</h1></div><div class='container tags'>"
+        for (let i = 0; i < tags.length; i++) {
+            post += "<button>"
+            post += tags[i]
+            post += "</button>"
+        }
+        post += "</div>"
+    
+        // TODO: If image exists only
+        post += "<div class='container'><img src='"
+        post += img
+        post += "'>"
+        post += "<div class='container'><p class='body'>"
+        post += body
+        post += "</p></div></div></div><br>"
+    
+        document.getElementById("post-collection").innerHTML += post;
     }
-    post += "</div><div class='container'><p class='date'>"
-    post += time
-    post += "</p></div><div class='container'><h1 class='title'>"
-    post += title
-    post += "</h1></div><div class='container tags'>"
-    for (let i = 0; i < tags.length; i++) {
-        post += "<button>"
-        post += tags[i]
-        post += "</button>"
-    }
-    post += "</div>"
-
-    // TODO: If image exists only
-    post += "<div class='container'><img src='"
-    post += img
-    post += "'>"
-    post += "<div class='container'><p class='body'>"
-    post += body
-    post += "</p></div></div></div><br>"
-
-    document.getElementById("post-collection").innerHTML += post;
 });
-
-// Sync counter changes
-dbRefPostCount.on('value', snap => {
-    postCount = snap.val();
-});
-
-let dltButton = document.createElement('button');
-dltButton.setAttribute('id', 'dltButton' + postCount);
-dltButton.innerHTML = 'dltButton' + postCount;
-document.body.appendChild(dltButton);
 
 // Function to create a new post
 createPost = () => {
 
     let date = new Date(Date.now()).toString().split(" ");
 
-    dbRefList.child("post" + (postCount + 1)).set({
+    postCount = lowerPostCount(postCount);
+
+    dbRefList.child("post" + (postCount)).set({
         author: localStorage.getItem("username"),
         pfp: localStorage.getItem("pfp"),
         title: document.getElementById('title').innerHTML,
         body: document.getElementById('body').innerHTML,
         tag: document.getElementById('tags').innerHTML.toLowerCase().split(" "),
         time: date[0] + " " + date[1] + " " + date[2] + " " + date[3]+ " " + date[4],
-        img: "https://firebasestorage.googleapis.com/v0/b/uofthacks2021-298a3.appspot.com/o/posts%2Fpost" + (postCount+1) + "?alt=media"
+        img: "https://firebasestorage.googleapis.com/v0/b/uofthacks2021-298a3.appspot.com/o/posts%2Fpost" + (postCount) + "?alt=media",
+        isDeleted: false
     });
     
-    dbRefPostCount.set(postCount + 1);
+    dbRefPostCount.set(postCount);
     location.reload();
     return false;
 }
 
-deletePost = () => {
-
-}
+// deletePost = () => {
+//     dbRefList.child("post" + count).set(isDeleted, true);
+// }
