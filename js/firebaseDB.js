@@ -80,6 +80,8 @@ dbRefList.on('child_added', snap => {
         let tags = info.tag;
         let time = info.time;
         let id = info.id;
+
+        console.log(info)
         
         let post = "<div class='post'><div class='header'><div class='push'><img class='profile-picture' src='"
         post += pfp
@@ -87,7 +89,7 @@ dbRefList.on('child_added', snap => {
         post += author
         post += "</p></div>"
         if (author === localStorage.getItem("username")) {
-            post += "<div class='delete'><a onclick = 'deletePost(" + '"' + id + '"' + ")'><i class='fas fa-trash'></i></a></div>"
+            post += "<div class='delete'><a onclick = 'deletePost(" + '"' + info.id + '"' + ")'><i class='fas fa-trash'></i></a></div>"
         }
         post += "</div><div class='container'><p class='date'>"
         post += time
@@ -147,6 +149,7 @@ createPost = () => {
                 time: date[0] + " " + date[1] + " " + date[2] + " " + date[3]+ " " + date[4],
                 isDeleted: false,
                 img: "https://firebasestorage.googleapis.com/v0/b/uofthacks2021-298a3.appspot.com/o/posts%2Fpost" + (postCount) + "?alt=media",
+                id: postCount
             });
         }
         
@@ -162,17 +165,8 @@ createPost = () => {
 
 deletePost = (myID) => {
 
-    let myUser;
-    let postUser;
-
-    if (myUser === postUser) {
-        dbRefList.child("post" + myID + "/isDeleted").set(true);
-        console.log(myID);
+    dbRefList.child("post" + myID + "/isDeleted").set(true);
         location.reload();
         return false;
-    }
-    else {
-        alert("You cannot delete this post! It is not yours.")
-    }
 
 }
