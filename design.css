@@ -262,7 +262,7 @@ hr {
 }
 
 .comment-post {
-  width: 95%
+  width: 90%
 }
 
 .comment-post[contenteditable]:empty::before {
