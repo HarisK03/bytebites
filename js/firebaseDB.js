@@ -154,34 +154,8 @@ dbRefList.on('child_added', snap => {
                     post += "</p></div>"
                 }
             }
-
-
             post += "<div class='comment-message'><span id='c" + info.id + "' class='textarea2 comment-post' role='textbox' contenteditable></span><a onclick = 'addComment(" + '"' + info.id + '"' + ")'><i class='fas fa-paper-plane'></i></a></div>"
-            
             post += "</div></div><br>"
-
-        // <hr class="solid">  
-        //   <div class='comment-container'>
-        //     <div class='container comments'>
-        //       <h3>Ayush Vora</h3>
-        //       <p>Hey this is a very cute cat :)</p>
-        //     </div>
-        //     <div class='container comments'>
-        //       <h3>Ayush Vora</h3>
-        //       <p>Hey this is a very cute cat :)</p>
-        //     </div>
-        //     <div class='container comments'>
-        //       <h3>Ayush Vora</h3>
-        //       <p>Hey this is a very cute cat :) </p>
-        //     </div>
-        //   </div>
-        //   <div class='comment-message'>
-        //     <span id="body" class="textarea2 comment-post" role="textbox" contenteditable></span>
-        //     <i class="fas fa-paper-plane"></i>
-        //   </div>
-
-
-        
             document.getElementById("post-collection").innerHTML += post;
         }
     }
